@@ -62,74 +62,204 @@ opacity:0.8;
 
 }
 
-.market-widget{
+.coin-grid{
 
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+width:100%;
+
+}
+
+
+
+.crypto-card{
+
+background:#ffffff;
+border:1px solid #e5e7eb;
+border-radius:18px;
+padding:20px;
+transition:all 0.3s ease;
+cursor:pointer;
+
+}
+
+
+
+.crypto-card:hover{
+
+transform:translateY(-8px);
+border:2px solid #2563eb;
+box-shadow:0 12px 30px rgba(37,99,235,0.18);
+
+}
+
+
+
+.coin-header{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+}
+
+
+
+.coin-header img{
+
+width:45px;
+height:45px;
+border-radius:50%;
+
+}
+
+
+
+.coin-header h3{
+
+margin:0;
+font-size:18px;
+font-weight:700;
+
+}
+
+
+
+.coin-header span{
+
+font-size:13px;
+color:#8a94a6;
+
+}
+
+
+
+.star{
+
+font-size:28px;
+background:none;
+border:none;
+cursor:pointer;
+color:#64748b;
+
+}
+
+
+
+.star:hover{
+
+color:#f59e0b;
+transform:scale(1.15);
+
+}
+
+
+
+.crypto-card h2{
+
+font-size:28px;
+margin:20px 0 12px;
+font-weight:700;
+
+}
+
+
+
+.profit,
+.loss{
+
+display:inline-block;
+padding:6px 12px;
+border-radius:8px;
+font-size:14px;
+font-weight:600;
+
+}
+
+
+
+.profit{
+
+background:#dcfce7;
+color:#16a34a;
+
+}
+
+
+
+.loss{
+
+background:#fee2e2;
+color:#dc2626;
+
+}
+
+
+
+.coin-info{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
 margin-top:30px;
 
 }
 
 
 
-.market-box{
+.coin-info small{
 
-background:white;
-padding:20px;
-border-radius:10px;
-
-}
-
-
-
-.market-card{
-
-display:flex;
-align-items:center;
-gap:15px;
-padding:12px;
-border-bottom:1px solid #eee;
-transition:0.3s;
-
-}
-
-
-.market-card:hover{
-
-transform:translateY(-3px);
-
-}
-
-
-.market-card img{
-
-width:40px;
-height:40px;
-
-}
-
-
-.market-card h3{
-
-margin:0;
-
-}
-
-
-.market-card span{
-
-font-weight:bold;
+color:#94a3b8;
+font-size:12px;
 
 }
 
 
 
-@media(max-width:768px){
+.coin-info p{
 
-.market-widget{
+margin-top:5px;
+font-size:15px;
+font-weight:600;
+
+}
+
+
+/* Tablet */
+
+@media(max-width:1024px){
+
+.coin-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+.coin-grid{
 
 grid-template-columns:1fr;
+
+}
+
+
+.crypto-card{
+
+padding:18px;
+
+}
+
+
+.coin-info{
+
+grid-template-columns:repeat(3,1fr);
 
 }
 

@@ -100,91 +100,154 @@ inrResult.innerHTML =
 
 async function renderMarketWidget(){
 
-
 try{
-
 
 const coins = await fetchMarketData();
 
 
-
-const sortedCoins = coins.sort(
+const sorted = coins.sort(
 (a,b)=>
 b.price_change_percentage_24h -
 a.price_change_percentage_24h
 );
 
 
+const topGainers = sorted.slice(0,6);
 
-const topGainers =
-sortedCoins.slice(0,5);
-
-
-
-const topLosers =
-sortedCoins.slice(-5);
+const topLosers = sorted.slice(-6);
 
 
 
-gainers.innerHTML =
-topGainers.map(
-coin=>`
-
-<div class="market-card">
-<img src="${coin.image}">
-
-<div>
-
-<h3>${coin.name}</h3>
-<p>
-$${coin.current_price}
-</p>
-
-<span>
-+${coin.price_change_percentage_24h.toFixed(2)}%
-</span>
-
-</div>
-</div>
-
-`
-).join("");
+gainers.innerHTML = topGainers
+.map(createMarketCard)
+.join("");
 
 
-losers.innerHTML =
-topLosers.map(
-coin=>`
 
-<div class="market-card">
-<img src="${coin.image}">
-<div>
+losers.innerHTML = topLosers
+.map(createMarketCard)
+.join("");
 
-<h3>${coin.name}</h3>
 
-<p>
-$${coin.current_price}
-</p>
-
-<span>
-${coin.price_change_percentage_24h.toFixed(2)}%
-</span>
-
-</div>
-</div>
-
-`
-).join("");
 
 }
 
 catch(error){
 
-gainers.innerHTML =
-"Unable to load market data";
-
-losers.innerHTML =
-"Unable to load market data";
+gainers.innerHTML="Unable to load data";
+losers.innerHTML="Unable to load data";
 
 }
+
 }
+
+
+
+function createMarketCard(coin){
+
+const change =
+coin.price_change_percentage_24h.toFixed(2);
+
+
+return `
+
+<div class="crypto-card">
+
+
+<div class="coin-header">
+
+<img src="${coin.image}">
+
+<div>
+
+<h3>${coin.name}</h3>
+
+<span>
+${coin.symbol.toUpperCase()}
+</span>
+
+</div>
+
+
+<button class="star">
+☆ 
+</button>
+
+
+</div>
+
+
+
+<h2>
+$${coin.current_price.toLocaleString()}
+</h2>
+
+
+
+<p class="${change>=0?'profit':'loss'}">
+
+${change>=0?'▲':'▼'} 
+${change}%
+
+</p>
+
+
+
+
+<div class="coin-info">
+
+
+<div>
+
+<small>
+Market Cap
+</small>
+
+<p>
+$${(coin.market_cap/1e9).toFixed(2)}B
+</p>
+
+</div>
+
+
+
+<div>
+
+<small>
+Volume
+</small>
+
+<p>
+$${(coin.total_volume/1e9).toFixed(2)}B
+</p>
+
+</div>
+
+
+
+<div>
+
+<small>
+Rank
+</small>
+
+<p>
+#${coin.market_cap_rank}
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+`;
+
+}
+
+
+
 renderMarketWidget();
