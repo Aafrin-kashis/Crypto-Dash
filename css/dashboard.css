@@ -22,3 +22,42 @@
 }
 
 .error { color: red; }
+
+.currency-box{
+
+background:white;
+padding:1.5rem;
+border-radius:10px;
+margin-bottom:1.5rem;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+
+}
+
+
+.currency-box input{
+
+width:70%;
+padding:12px;
+border-radius:5px;
+border:1px solid #ccc;
+
+}
+
+
+.currency-box button{
+
+padding:12px 20px;
+border:none;
+background:#007BFF;
+color:white;
+border-radius:5px;
+cursor:pointer;
+
+}
+
+
+.currency-box button:hover{
+
+opacity:0.8;
+
+}
