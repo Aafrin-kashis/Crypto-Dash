@@ -27,3 +27,21 @@ export async function fetchUSDToINR(){
   return res.json();
 
 }
+
+export async function fetchMarketData(){
+
+  const res = await fetch(
+    `${API_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&price_change_percentage=24h`
+  );
+
+
+  if(!res.ok){
+
+    throw new Error("Market data failed");
+
+  }
+
+
+  return res.json();
+
+}
