@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryptoDash – Real-Time Market Tracker</title>
+  <meta name="description" content="Track live cryptocurrency and stock prices with real-time charts.">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <main class="dashboard">
+    <h1>CryptoDash</h1>
+    <input type="text" id="search" placeholder="Search for Bitcoin, Ethereum..." />
+    <div id="results"></div>
+    <section id="favorites">
+      <h2>My Favorites</h2>
+      <ul id="favList"></ul>
+    </section>
+    <canvas id="priceChart"></canvas>
+  </main>
+
+  <div id="footer"></div>
+  <script src="../js/loader.js"></script>
+  <script type="module" src="../js/dashboard.js"></script>
+</body>
+</html>
