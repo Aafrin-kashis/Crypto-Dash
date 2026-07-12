@@ -1,4 +1,4 @@
-import { fetchCoin, fetchHistory, fetchUSDToINR } from "./api.js";
+import { fetchCoin, fetchHistory, fetchUSDToINR, fetchMarketData } from "./api.js";
 import { saveFavorite, loadFavorites } from "./utils.js";
 
 const search = document.getElementById("search");
@@ -7,6 +7,8 @@ const favList = document.getElementById("favList");
 const usdInput = document.getElementById("usdInput");
 const convertBtn = document.getElementById("convertBtn");
 const inrResult = document.getElementById("inrResult");
+const gainers = document.getElementById("gainers");
+const losers = document.getElementById("losers");
 
 let chart;
 
@@ -95,3 +97,94 @@ inrResult.innerHTML =
 }
 
 });
+
+async function renderMarketWidget(){
+
+
+try{
+
+
+const coins = await fetchMarketData();
+
+
+
+const sortedCoins = coins.sort(
+(a,b)=>
+b.price_change_percentage_24h -
+a.price_change_percentage_24h
+);
+
+
+
+const topGainers =
+sortedCoins.slice(0,5);
+
+
+
+const topLosers =
+sortedCoins.slice(-5);
+
+
+
+gainers.innerHTML =
+topGainers.map(
+coin=>`
+
+<div class="market-card">
+<img src="${coin.image}">
+
+<div>
+
+<h3>${coin.name}</h3>
+<p>
+$${coin.current_price}
+</p>
+
+<span>
++${coin.price_change_percentage_24h.toFixed(2)}%
+</span>
+
+</div>
+</div>
+
+`
+).join("");
+
+
+losers.innerHTML =
+topLosers.map(
+coin=>`
+
+<div class="market-card">
+<img src="${coin.image}">
+<div>
+
+<h3>${coin.name}</h3>
+
+<p>
+$${coin.current_price}
+</p>
+
+<span>
+${coin.price_change_percentage_24h.toFixed(2)}%
+</span>
+
+</div>
+</div>
+
+`
+).join("");
+
+}
+
+catch(error){
+
+gainers.innerHTML =
+"Unable to load market data";
+
+losers.innerHTML =
+"Unable to load market data";
+
+}
+}
+renderMarketWidget();
