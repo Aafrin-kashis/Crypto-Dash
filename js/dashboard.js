@@ -1,9 +1,12 @@
-import { fetchCoin, fetchHistory } from "./api.js";
+import { fetchCoin, fetchHistory, fetchUSDToINR } from "./api.js";
 import { saveFavorite, loadFavorites } from "./utils.js";
 
 const search = document.getElementById("search");
 const results = document.getElementById("results");
 const favList = document.getElementById("favList");
+const usdInput = document.getElementById("usdInput");
+const convertBtn = document.getElementById("convertBtn");
+const inrResult = document.getElementById("inrResult");
 
 let chart;
 
@@ -62,3 +65,33 @@ function renderFavorites() {
 
 // Init favorites
 renderFavorites();
+
+convertBtn.addEventListener(
+"click",
+async()=>{
+
+try{
+
+const data = await fetchUSDToINR();
+
+const usd = usdInput.value;
+
+const rate = data.rates.INR;
+
+const result = usd * rate;
+
+
+inrResult.innerHTML =
+`INR Value: ₹${result.toFixed(2)}`;
+
+
+}
+
+catch(error){
+
+inrResult.innerHTML =
+"Currency conversion failed";
+
+}
+
+});
