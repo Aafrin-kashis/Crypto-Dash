@@ -1,5 +1,5 @@
 import { fetchCoin, fetchHistory, fetchUSDToINR, fetchMarketData } from "./api.js";
-import { saveFavorite, loadFavorites } from "./utils.js";
+import { saveFavorite, loadFavorites, removeFavorite } from "./utils.js";
 
 const search = document.getElementById("search");
 const results = document.getElementById("results");
@@ -89,9 +89,51 @@ async function renderChart(coin) {
   });
 }
 
-function renderFavorites() {
-  const favs = loadFavorites();
-  favList.innerHTML = favs.map(f => `<li>${f}</li>`).join("");
+function renderFavorites(){
+
+const favs=loadFavorites();
+
+favList.innerHTML="";
+
+favs.forEach((coin)=>{
+
+const item=document.createElement("div");
+
+item.className="fav-item";
+
+item.innerHTML=`
+<span>${coin}</span>
+<button class="deleteFav">✕</button>
+`;
+
+item.querySelector("span").addEventListener(
+"click",
+async()=>{
+
+const data=await fetchCoin(coin);
+
+renderResult(data);
+
+renderChart(coin);
+
+});
+
+item.querySelector(".deleteFav").addEventListener(
+"click",
+(e)=>{
+
+e.stopPropagation();
+
+removeFavorite(coin);
+
+renderFavorites();
+
+});
+
+favList.appendChild(item);
+
+});
+
 }
 
 // Init favorites

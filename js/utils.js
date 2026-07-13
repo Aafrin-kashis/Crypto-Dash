@@ -7,3 +7,14 @@ export function saveFavorite(coin) {
 export function loadFavorites() {
   return JSON.parse(localStorage.getItem("favorites")) || [];
 }
+
+export function removeFavorite(coin){
+
+const favs=loadFavorites().filter(item=>item!==coin);
+
+localStorage.setItem(
+"favorites",
+JSON.stringify(favs)
+);
+
+}
