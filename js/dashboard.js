@@ -1,6 +1,22 @@
 import { fetchCoin, fetchHistory, fetchUSDToINR, fetchMarketData } from "./api.js";
 import {saveFavorite, loadFavorites, removeFavorite} from "./utils.js";
 
+const loader = document.getElementById("loader");
+
+
+function showLoader(){
+
+  loader.style.display="flex";
+
+}
+
+
+function hideLoader(){
+
+  loader.style.display="none";
+
+}
+
 const search = document.getElementById("search");
 const results = document.getElementById("results");
 const favList = document.getElementById("favList");
@@ -22,11 +38,13 @@ if(!coin) return;
 
 try{
 
+showLoader();
+
 const data = await fetchCoin(coin);
 
 renderResult(data);
 
-renderChart(coin);
+await renderChart(coin);
 
 }
 
@@ -34,6 +52,12 @@ catch(error){
 
 results.innerHTML =
 '<p class="error">Coin not found</p>';
+
+}
+
+finally{
+
+hideLoader();
 
 }
 

@@ -505,3 +505,67 @@ body.dark .deleteFav:hover{
   background:#dc2626;
 
 }
+
+.loader-wrapper{
+
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin:30px 0;
+
+}
+
+
+.spinner{
+
+  width:45px;
+  height:45px;
+  border:5px solid #e5e7eb;
+  border-top:5px solid #2563eb;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+
+}
+
+
+.loader-wrapper p{
+
+  font-size:15px;
+  font-weight:600;
+  color:#64748b;
+
+}
+
+
+@keyframes spin{
+
+  from{
+
+    transform:rotate(0deg);
+
+  }
+
+  to{
+
+    transform:rotate(360deg);
+
+  }
+
+}
+
+
+body.dark .loader-wrapper p{
+
+  color:#cbd5e1;
+
+}
+
+
+body.dark .spinner{
+
+  border-color:#334155;
+  border-top-color:#60a5fa;
+
+}

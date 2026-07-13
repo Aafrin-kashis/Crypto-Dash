@@ -15,6 +15,10 @@
 
   <main class="dashboard">
     <h1>CryptoDash</h1>
+    <div id="loader" class="loader-wrapper">
+  <div class="spinner"></div>
+  <p>Loading market data...</p>
+</div>
     <div class="search-box">
   <input
     type="text"
@@ -53,7 +57,8 @@
 </section>
 <section class="chart-section">
 
-<h2>Price History (7 Days)</h2>
+<h1>Price History (7 Days)</h1>
+<hr> <br>
 
 <div class="chart-card">
 
@@ -68,15 +73,18 @@
   <div class="market-box">
 
     <h2>Top Gainers</h2>
+    <hr> <br> <br>
 
     <div id="gainers" class="coin-grid"></div>
 
   </div>
 
+<br> <br>
 
   <div class="market-box">
 
     <h2>Top Losers</h2>
+    <hr> <br><br>
 
    <div id="losers" class="coin-grid"></div>
 
