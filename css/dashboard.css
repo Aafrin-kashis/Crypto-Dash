@@ -20,7 +20,15 @@
   margin-bottom: 1rem;
   text-align: center;
 }
-
+#favBtn{
+  background-color: #007BFF;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+#favBtn:hover{
+  background-color: #054a93;
+}
 .error { color: red; }
 
 .currency-box{
@@ -141,7 +149,7 @@ font-size:26px;
 background:none;
 border:none;
 cursor:pointer;
-color:#9ca3af;
+color:blue;
 transition:.3s;
 
 }
@@ -360,7 +368,7 @@ width:22px;
 height:22px;
 border:none;
 border-radius:50%;
-background:#ef4444;
+background:blue;
 color:#fff;
 font-size:14px;
 cursor:pointer;
