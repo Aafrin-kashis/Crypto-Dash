@@ -9,21 +9,50 @@ const convertBtn = document.getElementById("convertBtn");
 const inrResult = document.getElementById("inrResult");
 const gainers = document.getElementById("gainers");
 const losers = document.getElementById("losers");
+const searchBtn = document.getElementById("searchBtn");
 
 let chart;
 
 // Handle search
-search.addEventListener("keypress", async (e) => {
-  if (e.key === "Enter") {
-    const coin = search.value.toLowerCase();
-    try {
-      const data = await fetchCoin(coin);
-      renderResult(data);
-      renderChart(coin);
-    } catch (err) {
-      results.innerHTML = `<p class="error">Not found</p>`;
-    }
-  }
+async function searchCoin(){
+
+const coin = search.value.trim().toLowerCase();
+
+if(!coin) return;
+
+try{
+
+const data = await fetchCoin(coin);
+
+renderResult(data);
+
+renderChart(coin);
+
+}
+
+catch(error){
+
+results.innerHTML =
+'<p class="error">Coin not found</p>';
+
+}
+
+}
+
+search.addEventListener("keypress",(e)=>{
+
+if(e.key==="Enter"){
+
+searchCoin();
+
+}
+
+});
+
+searchBtn.addEventListener("click",()=>{
+
+searchCoin();
+
 });
 
 function renderResult(data) {
