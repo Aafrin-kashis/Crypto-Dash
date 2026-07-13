@@ -12,8 +12,13 @@
 
   border-bottom:1px solid var(--border-color);
 
-  position:sticky;
+  
+
+  position:fixed;
   top:0;
+  left:0;
+
+
   z-index:1000;
 
   backdrop-filter:blur(10px);
@@ -62,7 +67,9 @@
 
 .footer{
 
-  margin-top:50px;
+  /* margin-top:auto; */
+  width:100%;
+
   padding:30px 40px;
 
   background:var(--card-bg);
@@ -140,7 +147,7 @@
 
   max-width:1000px;
   margin:auto;
-  padding:50px 30px;
+  padding:100px 30px 50px;
 
 }
 
@@ -219,5 +226,11 @@
   grid-template-columns:1fr;
 
 }
+
+}
+
+main{
+
+  flex:1;
 
 }
