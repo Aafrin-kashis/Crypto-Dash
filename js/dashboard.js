@@ -1,5 +1,5 @@
 import { fetchCoin, fetchHistory, fetchUSDToINR, fetchMarketData } from "./api.js";
-import { saveFavorite, loadFavorites, removeFavorite } from "./utils.js";
+import {saveFavorite, loadFavorites, removeFavorite} from "./utils.js";
 
 const search = document.getElementById("search");
 const results = document.getElementById("results");
@@ -199,7 +199,35 @@ losers.innerHTML = topLosers
 .map(createMarketCard)
 .join("");
 
+document.querySelectorAll(".star").forEach((star)=>{
 
+star.addEventListener("click",(e)=>{
+
+e.stopPropagation();
+
+const coinId=star.dataset.id;
+
+const favs=loadFavorites();
+
+if(favs.includes(coinId)){
+
+removeFavorite(coinId);
+
+star.textContent="☆";
+
+}else{
+
+saveFavorite(coinId);
+
+star.textContent="★";
+
+}
+
+renderFavorites();
+
+});
+
+});
 
 }
 
@@ -216,14 +244,15 @@ losers.innerHTML="Unable to load data";
 
 function createMarketCard(coin){
 
-const change =
-coin.price_change_percentage_24h.toFixed(2);
+const favs=loadFavorites();
 
+const isFav=favs.includes(coin.id);
 
-return `
+const change=coin.price_change_percentage_24h.toFixed(2);
+
+return`
 
 <div class="crypto-card">
-
 
 <div class="coin-header">
 
@@ -233,85 +262,54 @@ return `
 
 <h3>${coin.name}</h3>
 
-<span>
-${coin.symbol.toUpperCase()}
-</span>
+<span>${coin.symbol.toUpperCase()}</span>
 
 </div>
 
-
-<button class="star">
-☆ 
+<button
+class="star"
+data-id="${coin.id}"
+>
+${isFav?"★":"☆"}
 </button>
 
-
 </div>
 
+<h2>$${coin.current_price.toLocaleString()}</h2>
 
+<p class="${change>=0?"profit":"loss"}">
 
-<h2>
-$${coin.current_price.toLocaleString()}
-</h2>
-
-
-
-<p class="${change>=0?'profit':'loss'}">
-
-${change>=0?'▲':'▼'} 
-${change}%
+${change>=0?"▲":"▼"} ${change}%
 
 </p>
-
-
-
 
 <div class="coin-info">
 
+<div>
+
+<small>Market Cap</small>
+
+<p>$${(coin.market_cap/1e9).toFixed(2)}B</p>
+
+</div>
 
 <div>
 
-<small>
-Market Cap
-</small>
+<small>Volume</small>
 
-<p>
-$${(coin.market_cap/1e9).toFixed(2)}B
-</p>
+<p>$${(coin.total_volume/1e9).toFixed(2)}B</p>
 
 </div>
-
-
 
 <div>
 
-<small>
-Volume
-</small>
+<small>Rank</small>
 
-<p>
-$${(coin.total_volume/1e9).toFixed(2)}B
-</p>
+<p>#${coin.market_cap_rank}</p>
 
 </div>
 
-
-
-<div>
-
-<small>
-Rank
-</small>
-
-<p>
-#${coin.market_cap_rank}
-</p>
-
 </div>
-
-
-
-</div>
-
 
 </div>
 

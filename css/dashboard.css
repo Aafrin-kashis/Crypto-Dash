@@ -137,20 +137,19 @@ color:#8a94a6;
 
 .star{
 
-font-size:28px;
+font-size:26px;
 background:none;
 border:none;
 cursor:pointer;
-color:#64748b;
+color:#9ca3af;
+transition:.3s;
 
 }
 
-
-
 .star:hover{
 
+transform:scale(1.2);
 color:#f59e0b;
-transform:scale(1.15);
 
 }
 
