@@ -422,3 +422,86 @@ width:100% !important;
 height:350px !important;
 
 }
+
+body.dark .card,
+body.dark .currency-box,
+body.dark .favorite-box,
+body.dark .chart-card,
+body.dark .crypto-card{
+
+  background:#111827;
+  border-color:#334155;
+  color:#f8fafc;
+
+}
+
+
+body.dark .chart-section h2,
+body.dark .favorite-box h2{
+
+  color:#f8fafc;
+
+}
+
+
+body.dark .coin-header span,
+body.dark .coin-info small{
+
+  color:#cbd5e1;
+
+}
+
+
+body.dark .coin-info p,
+body.dark .crypto-card h2{
+
+  color:#f8fafc;
+
+}
+
+
+body.dark input{
+
+  background:#1e293b;
+  color:#f8fafc;
+  border-color:#475569;
+
+}
+
+
+body.dark input::placeholder{
+
+  color:#94a3b8;
+
+}
+
+body.dark .fav-item{
+
+  background:#1e293b;
+  color:#f8fafc;
+  border:1px solid #334155;
+
+}
+
+
+body.dark .fav-item:hover{
+
+  background:#2563eb;
+  color:white;
+
+}
+
+
+body.dark .deleteFav{
+
+  background:#3b82f6;
+  color:white;
+
+}
+
+
+body.dark .deleteFav:hover{
+
+  background:#dc2626;
+
+}

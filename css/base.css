@@ -11,9 +11,11 @@
   --card-bg:#ffffff;
   --border-color:#e5e7eb;
   --primary:#2563eb;
+  --secondary-text:#64748b;
   --shadow:0 8px 25px rgba(0,0,0,0.08);
 
 }
+
 
 
 body{
@@ -29,12 +31,13 @@ body{
 
 body.dark{
 
-  --bg-color:#0f172a;
-  --text-color:#e5e7eb;
+  --bg-color:#020617;
+  --text-color:#f8fafc;
   --card-bg:#111827;
   --border-color:#334155;
-  --primary:#3b82f6;
-  --shadow:0 10px 30px rgba(37,99,235,0.15);
+  --primary:#60a5fa;
+  --secondary-text:#cbd5e1;
+  --shadow:0 10px 30px rgba(0,0,0,0.4);
 
 }
 
