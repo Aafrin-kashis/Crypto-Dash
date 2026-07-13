@@ -71,22 +71,62 @@ function renderResult(data) {
   });
 }
 
-async function renderChart(coin) {
-  const history = await fetchHistory(coin);
-  const ctx = document.getElementById("priceChart").getContext("2d");
-  if (chart) chart.destroy();
-  chart = new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: history.prices.map(p => new Date(p[0]).toLocaleDateString()),
-      datasets: [{
-        label: `${coin} Price`,
-        data: history.prices.map(p => p[1]),
-        borderColor: "#007BFF",
-        fill: false
-      }]
-    }
-  });
+async function renderChart(coin){
+
+const history=await fetchHistory(coin);
+
+const prices=history.prices.map(p=>p[1]);
+
+const labels=history.prices.map(p=>new Date(p[0]).toLocaleDateString());
+
+const isUp=prices.at(-1)>=prices[0];
+
+const color=isUp?"#16a34a":"#dc2626";
+
+const ctx=document.getElementById("priceChart").getContext("2d");
+
+if(chart) chart.destroy();
+
+chart=new Chart(ctx,{
+type:"line",
+data:{
+labels,
+datasets:[{
+label:`${coin.toUpperCase()} Price`,
+data:prices,
+borderColor:color,
+backgroundColor:isUp?"rgba(22,163,74,.15)":"rgba(220,38,38,.15)",
+borderWidth:3,
+fill:true,
+tension:.4,
+pointRadius:4,
+pointBackgroundColor:color
+}]
+},
+options:{
+responsive:true,
+maintainAspectRatio:false,
+plugins:{
+legend:{
+display:true,
+position:"top"
+}
+},
+scales:{
+x:{
+grid:{
+display:false
+}
+},
+y:{
+grid:{
+color:"#e5e7eb"
+}
+}
+}
+}
+});
+
 }
 
 function renderFavorites(){

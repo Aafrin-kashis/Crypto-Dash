@@ -375,3 +375,42 @@ justify-content:center;
 background:#dc2626;
 
 }
+
+.chart-section{
+
+margin:25px 0;
+
+}
+
+.chart-section h2{
+
+font-size:22px;
+margin-bottom:15px;
+font-weight:700;
+color:#1f2937;
+
+}
+
+.chart-card{
+
+background:#ffffff;
+padding:20px;
+border-radius:16px;
+border:1px solid #e5e7eb;
+box-shadow:0 6px 18px rgba(0,0,0,.08);
+transition:.3s;
+
+}
+
+.chart-card:hover{
+
+box-shadow:0 10px 25px rgba(37,99,235,.15);
+
+}
+
+#priceChart{
+
+width:100% !important;
+height:350px !important;
+
+}
