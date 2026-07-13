@@ -1,0 +1,185 @@
+.logo{
+
+  width:45px;
+  height:45px;
+  border-radius:50%;
+
+  transition:0.3s;
+
+}
+
+
+.logo:hover{
+
+  transform:rotate(10deg) scale(1.08);
+
+}
+
+
+
+.logo-text{
+
+  font-size:22px;
+  font-weight:700;
+  color:var(--primary);
+
+}
+
+
+
+.nav-link{
+
+  font-size:16px;
+  font-weight:600;
+
+  position:relative;
+
+}
+
+
+
+.nav-link::after{
+
+  content:"";
+  position:absolute;
+
+  left:0;
+  bottom:-8px;
+
+  width:0;
+  height:3px;
+
+  background:var(--primary);
+
+  transition:0.3s;
+
+}
+
+
+
+.nav-link:hover::after{
+
+  width:100%;
+
+}
+
+
+
+.theme-toggle{
+
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+}
+
+
+
+.switch{
+
+  position:relative;
+
+  width:50px;
+  height:26px;
+
+}
+
+
+
+.switch input{
+
+  display:none;
+
+}
+
+
+
+.slider{
+
+  position:absolute;
+
+  inset:0;
+
+  background:#cbd5e1;
+
+  border-radius:30px;
+
+  cursor:pointer;
+
+  transition:0.3s;
+
+}
+
+
+
+.slider::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:20px;
+  height:20px;
+
+  left:3px;
+  top:3px;
+
+  background:white;
+
+  border-radius:50%;
+
+  transition:0.3s;
+
+}
+
+
+
+.switch input:checked + .slider{
+
+  background:#2563eb;
+
+}
+
+
+
+.switch input:checked + .slider::before{
+
+  transform:translateX(24px);
+
+}
+
+
+
+.footer h3{
+
+  color:var(--primary);
+
+  font-size:22px;
+
+}
+
+
+
+.footer p{
+
+  color:#94a3b8;
+
+}
+
+
+
+.footer-links a{
+
+  font-weight:600;
+
+  transition:0.3s;
+
+}
+
+
+
+.footer-links a:hover{
+
+  color:var(--primary);
+
+}
